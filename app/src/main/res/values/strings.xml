@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Loja2</string>
+    <string name="bt_logar">Sign In</string>
 </resources>
