@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="activity.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,14 +12,15 @@
         android:layout_height="0dp"
         android:layout_marginTop="62dp"
         android:layout_marginBottom="84dp"
+        android:contentDescription="@string/logo_loja_login"
         android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/etEmail_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etEmail_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -28,14 +29,16 @@
         android:layout_marginRight="14dp"
         android:layout_marginBottom="41dp"
         android:ems="10"
+        android:hint="@string/hint_email_login"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/etSenha_login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etSenha_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -44,25 +47,26 @@
         android:layout_marginRight="14dp"
         android:layout_marginBottom="42dp"
         android:ems="10"
+        android:hint="@string/hint_senha_login"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/margin"
+        app:layout_constraintBottom_toTopOf="@+id/btLogar_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail_login" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvesqueceuSenha_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="142dp"
-        android:text="TextView"
+        android:text="@string/textview_senha_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/margin" />
+        app:layout_constraintTop_toBottomOf="@+id/btLogar_login" />
 
     <Button
-        android:id="@+id/margin"
+        android:id="@+id/btLogar_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -70,10 +74,12 @@
         android:layout_marginEnd="14dp"
         android:layout_marginRight="14dp"
         android:layout_marginBottom="53dp"
+        android:background="#34495e"
         android:text="@string/bt_logar"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tvesqueceuSenha_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/etSenha_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
