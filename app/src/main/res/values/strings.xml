@@ -6,4 +6,6 @@
     <string name="hint_email_login">E-mail</string>
     <string name="logo_loja_login">Logo da Loja</string>
     <string name="toast_preencher_todos_campos">Você deve preencher todos os campos.</string>
+    <string name="snack_erro_login">Erro ao realizar o login</string>
+    <string name="msg_invalido">Usuário ou senha inválidos</string>
 </resources>
