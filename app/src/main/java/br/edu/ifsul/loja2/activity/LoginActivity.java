@@ -30,9 +30,11 @@ import br.edu.ifsul.loja2.model.User;
 import br.edu.ifsul.loja2.setup.AppSetup;
 
 public class LoginActivity extends AppCompatActivity {
+
     private static final String TAG = "texto";
     private EditText etEmail, etSenha;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +47,15 @@ public class LoginActivity extends AppCompatActivity {
         etSenha = findViewById(R.id.etSenha_login);
 
         findViewById(R.id.btLogar_login).setOnClickListener(new View.OnClickListener() {
-            final String email = etEmail.getText().toString();
-            final String senha = etSenha.getText().toString();
             @Override
             public void onClick(View v){
+                String email = etEmail.getText().toString();
+                String senha = etSenha.getText().toString();
                 if(!email.isEmpty() && !senha.isEmpty()){
                     signIn(email, senha);
                 }else{
                     if(email.isEmpty()){
-                        etEmail.setError(getString(R.string.msg_invalido));
+                        etEmail.setError( getString(R.string.msg_invalido));
                     }
                     if(senha.isEmpty()){
                         etSenha.setError(getString(R.string.msg_invalido));
@@ -64,11 +66,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.tvesqueceuSenha_login).setOnClickListener(new View.OnClickListener() {
-            final String email = etEmail.getText().toString();
-            final String senha = etSenha.getText().toString();
-
             @Override
             public void onClick(View v){
+                String email = etEmail.getText().toString();
+                String senha = etSenha.getText().toString();
                 if(!email.isEmpty()){
                     resetarSenha(email);
                 }else{
@@ -82,11 +83,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setUserSessao(){
         FirebaseDatabase.getInstance().getReference()
-                .child("vendas").child("users").child("1")
+                .child("vendas").child("users").child(mAuth.getCurrentUser().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                        Log.d(TAG, "dataSnapshot=" + dataSnapshot + "id user = " + mAuth.getCurrentUser().getUid());
                         AppSetup.user = dataSnapshot.getValue(User.class);
                         AppSetup.user.setFirebaseUser(mAuth.getCurrentUser());
                         startActivity(new Intent(LoginActivity.this,
@@ -144,6 +145,8 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, "signInWithEmail:success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     //updateUI(user);
+                    setUserSessao();
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
