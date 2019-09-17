@@ -1,11 +1,22 @@
 <resources>
-    <string name="app_name">Loja2</string>
-    <string name="bt_logar">Sign In</string>
-    <string name="hint_senha_login">Senha</string>
-    <string name="textview_senha_login">Esqueceu sua senha?</string>
-    <string name="hint_email_login">E-mail</string>
-    <string name="logo_loja_login">Logo da Loja</string>
+    <string name="app_name">Loja</string>
+    <string name="bt_logar">Logar</string>
+    <string name="content_description_logo_da_empresa">logo da empresa</string>
+    <string name="hint_email_login">email</string>
+    <string name="hint_senha_login">senha</string>
+    <string name="tv_esqueceu_senha_login">Esqueceu sua senha?</string>
     <string name="toast_preencher_todos_campos">Você deve preencher todos os campos.</string>
-    <string name="snack_erro_login">Erro ao realizar o login</string>
-    <string name="msg_invalido">Usuário ou senha inválidos</string>
+    <string name="toast_falha_autenticacao">Falha na autenticação.</string>
+    <string name="msg_invalido">Inválido</string>
+    <string name="snack_problem_autenticacao">Problemas na autenticação.</string>
+    <string name="snack_operacao_cancelada">Operação cancelada.</string>
+    <string name="alert_title_atencao">Atenção</string>
+    <string name="alert_message_email_recover">Um email de recuperação de senha será enviado para:</string>
+    <string name="alert_sim">Sim</string>
+    <string name="alert_nao">Não</string>
+    <string name="snack_email_enviado">Email de recuperação eviado para</string>
+    <string name="hint_estoque">000</string>
+    <string name="hint_nome_produto">Nome do produto</string>
+    <string name="contentDescription_nome_produto">foto do produto</string>
+    <string name="hint_valor_produto">R$ 00,00</string>
 </resources>

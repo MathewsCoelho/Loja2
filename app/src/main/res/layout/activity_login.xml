@@ -1,86 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.LoginActivity"
-    android:id="@+id/R_id_container_activity_login">
+    android:id="@+id/R.id.container_activity_login">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView2"
         android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginBottom="84dp"
-        android:contentDescription="@string/logo_loja_login"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toTopOf="@+id/etEmail_login"
+        android:layout_height="157dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/content_description_logo_da_empresa"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <EditText
         android:id="@+id/etEmail_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="@string/hint_email_login"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etSenha_login"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/etSenha_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/hint_senha_login"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btLogar_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmail_login"
+        app:layout_constraintStart_toStartOf="@+id/etEmail_login"
         app:layout_constraintTop_toBottomOf="@+id/etEmail_login" />
-
-    <TextView
-        android:id="@+id/tvesqueceuSenha_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="142dp"
-        android:text="@string/textview_senha_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btLogar_login" />
 
     <Button
         android:id="@+id/btLogar_login"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="53dp"
-        android:background="#34495e"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
         android:text="@string/bt_logar"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvesqueceuSenha_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/font_white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_esqueceusenha_login"
+        app:layout_constraintEnd_toEndOf="@+id/etSenha_login"
+        app:layout_constraintStart_toStartOf="@+id/etSenha_login"
         app:layout_constraintTop_toBottomOf="@+id/etSenha_login" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_esqueceusenha_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_esqueceu_senha_login"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/btLogar_login"
+        app:layout_constraintStart_toStartOf="@+id/btLogar_login"
+        app:layout_constraintTop_toBottomOf="@+id/btLogar_login" />
+</android.support.constraint.ConstraintLayout>
