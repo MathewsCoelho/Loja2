@@ -19,4 +19,7 @@
     <string name="hint_nome_produto">Nome do produto</string>
     <string name="contentDescription_nome_produto">foto do produto</string>
     <string name="hint_valor_produto">R$ 00,00</string>
+    <string name="foto_do_cliente">Foto do cliente</string>
+    <string name="hint_nome_cliente"> Nome do cliente </string>
+    <string name="hint_cpf_cliente"> 000.000.000-19 </string>
 </resources>

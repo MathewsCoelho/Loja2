@@ -25,14 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="@string/hint_email_login"
         android:inputType="textEmailAddress"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -44,7 +45,7 @@
         android:ems="10"
         android:hint="@string/hint_senha_login"
         android:inputType="textPassword"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/etEmail_login"
         app:layout_constraintStart_toStartOf="@+id/etEmail_login"
         app:layout_constraintTop_toBottomOf="@+id/etEmail_login" />
@@ -55,12 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
+        android:background="#673AB7"
         android:text="@string/bt_logar"
         android:textColor="@color/font_white"
+        android:textColorLink="#6033B1"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_esqueceusenha_login"
         app:layout_constraintEnd_toEndOf="@+id/etSenha_login"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/etSenha_login"
         app:layout_constraintTop_toBottomOf="@+id/etSenha_login" />
 
@@ -68,10 +71,11 @@
         android:id="@+id/tv_esqueceusenha_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:text="@string/tv_esqueceu_senha_login"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/btLogar_login"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btLogar_login"
         app:layout_constraintTop_toBottomOf="@+id/btLogar_login" />
 </android.support.constraint.ConstraintLayout>

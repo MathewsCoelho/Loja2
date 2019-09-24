@@ -50,10 +50,11 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="@string/hint_nome_produto"
+                android:textColorHint="#000000"
+                android:textFontWeight="700"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.034"
-                app:layout_constraintStart_toEndOf="@+id/pb_foto_produtos_adapter"
                 app:layout_constraintTop_toTopOf="@+id/imvFotoProdutoAdapter" />
 
             <ImageView
@@ -77,6 +78,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="@string/hint_valor_produto"
+                android:textColor="#00B31414"
+                android:textColorHighlight="#00441919"
+                android:textColorHint="#016F2C"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvEstoqueProdutoAdapater"
