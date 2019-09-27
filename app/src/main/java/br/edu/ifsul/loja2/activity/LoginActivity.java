@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 import br.edu.ifsul.loja2.R;
 import br.edu.ifsul.loja2.model.User;
 import br.edu.ifsul.loja2.setup.AppSetup;
@@ -144,5 +146,28 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         builder.show();
+    }
+
+    public void onComplete(@NonNull Task<AuthResult> task) {
+        if (task.isSuccessful()) {
+            // Sign in success
+            if(mAuth.getCurrentUser().isEmailVerified()){
+                Log.d(TAG, "signInWithEmail:success");
+                setUserSessao(mAuth.getCurrentUser());
+            }else{
+                Snackbar.make(findViewById(R.id.container_activity_login), "Valide seu email para o singin.", Snackbar.LENGTH_LONG).show();
+            }
+
+        } else {
+            // If sign in fails, display a message to the user.
+            Log.w(TAG, "signInWithEmail:failure ",  task.getException());
+            if(Objects.requireNonNull(task.getException()).getMessage().contains("password")){
+                Snackbar.make(findViewById(R.id.container_activity_login), R.string.password_fail, Snackbar.LENGTH_LONG).show();
+                etSenha.setError(getString(R.string.input_error_invalido));
+            }else{
+                Snackbar.make(findViewById(R.id.container_activity_login), R.string.email_fail, Snackbar.LENGTH_LONG).show();
+                etEmail.setError(getString(R.string.input_error_invalido));
+            }
+        }
     }
 }

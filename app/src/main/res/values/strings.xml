@@ -22,4 +22,12 @@
     <string name="foto_do_cliente">Foto do cliente</string>
     <string name="hint_nome_cliente"> Nome do cliente </string>
     <string name="hint_cpf_cliente"> 000.000.000-19 </string>
+    <string name="password_fail"> Senha inválida  </string>
+    <string name="email_fail"> Email inválido </string>
+    <string name="input_error_invalido"> Inválido </string>
+    <string name="foto_do_produto"> Foto do Produto </string>
+    <string name="bt_vender"> Vender </string>
+    <string name="hint_descricao_produto"> Descrição do Produto </string>
+    <string name="hint_quantos"> Quantos </string>
+    <string name="hint_vendedor"> vendedor@email.com </string>
 </resources>
