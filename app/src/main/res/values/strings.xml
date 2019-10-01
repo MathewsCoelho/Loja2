@@ -30,4 +30,6 @@
     <string name="hint_descricao_produto"> Descrição do Produto </string>
     <string name="hint_quantos"> Quantos </string>
     <string name="hint_vendedor"> vendedor@email.com </string>
+    <string name="snack_insira_quantidade">Insira a quantidade</string>
+    <string name="snack_qde_insuficiente">Estoque insuficiente</string>
 </resources>

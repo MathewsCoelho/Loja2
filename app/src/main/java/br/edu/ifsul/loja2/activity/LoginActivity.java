@@ -148,26 +148,26 @@ public class LoginActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public void onComplete(@NonNull Task<AuthResult> task) {
-        if (task.isSuccessful()) {
-            // Sign in success
-            if(mAuth.getCurrentUser().isEmailVerified()){
-                Log.d(TAG, "signInWithEmail:success");
-                setUserSessao(mAuth.getCurrentUser());
-            }else{
-                Snackbar.make(findViewById(R.id.container_activity_login), "Valide seu email para o singin.", Snackbar.LENGTH_LONG).show();
-            }
-
-        } else {
-            // If sign in fails, display a message to the user.
-            Log.w(TAG, "signInWithEmail:failure ",  task.getException());
-            if(Objects.requireNonNull(task.getException()).getMessage().contains("password")){
-                Snackbar.make(findViewById(R.id.container_activity_login), R.string.password_fail, Snackbar.LENGTH_LONG).show();
-                etSenha.setError(getString(R.string.input_error_invalido));
-            }else{
-                Snackbar.make(findViewById(R.id.container_activity_login), R.string.email_fail, Snackbar.LENGTH_LONG).show();
-                etEmail.setError(getString(R.string.input_error_invalido));
-            }
-        }
-    }
+//    public void onComplete(@NonNull Task<AuthResult> task) {
+//        if (task.isSuccessful()) {
+//            // Sign in success
+//            if(mAuth.getCurrentUser().isEmailVerified()){
+//                Log.d(TAG, "signInWithEmail:success");
+//                setUserSessao(mAuth.getCurrentUser());
+//            }else{
+//                Snackbar.make(findViewById(R.id.container_activity_login), "Valide seu email para o singin.", Snackbar.LENGTH_LONG).show();
+//            }
+//
+//        } else {
+//            // If sign in fails, display a message to the user.
+//            Log.w(TAG, "signInWithEmail:failure ",  task.getException());
+//            if(Objects.requireNonNull(task.getException()).getMessage().contains("password")){
+//                Snackbar.make(findViewById(R.id.container_activity_login), R.string.password_fail, Snackbar.LENGTH_LONG).show();
+//                etSenha.setError(getString(R.string.input_error_invalido));
+//            }else{
+//                Snackbar.make(findViewById(R.id.container_activity_login), R.string.email_fail, Snackbar.LENGTH_LONG).show();
+//                etEmail.setError(getString(R.string.input_error_invalido));
+//            }
+//        }
+//    }
 }
