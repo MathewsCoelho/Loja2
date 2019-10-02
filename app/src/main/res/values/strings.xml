@@ -32,4 +32,14 @@
     <string name="hint_vendedor"> vendedor@email.com </string>
     <string name="snack_insira_quantidade">Insira a quantidade</string>
     <string name="snack_qde_insuficiente">Estoque insuficiente</string>
+    <string name="bt_cadastro">Cadastrar</string>
+    <string name="hint_nome_signup">Nome</string>
+    <string name="hint_sobrenome_signup">Sobrenome</string>
+    <string name="hint_funcao_signup">Função</string>
+    <string name="hint_login_signup">E-mail</string>
+    <string name="hint_senha_signup">Senha</string>
+    <string-array name="function_arrays">
+        <item>Administrador</item>
+        <item>Vendedor</item>
+    </string-array>
 </resources>

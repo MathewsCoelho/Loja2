@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -106,8 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "dataSnapshot=" + dataSnapshot + " id user = " + mAuth.getCurrentUser().getUid());
                         AppSetup.user = dataSnapshot.getValue(User.class);
                         AppSetup.user.setFirebaseUser(mAuth.getCurrentUser());
-                        startActivity(new Intent(LoginActivity.this, ProdutosActivity.class));
-                        finish();
+                        verifyFunction();
                     }
 
                     @Override
@@ -146,6 +146,31 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         builder.show();
+    }
+
+    private void verifyFunction(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("vendas").child("users").child(mAuth.getCurrentUser().getUid()).child("funcao");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.getValue(String.class).equals("Administrador")) {
+                    startActivity(new Intent(LoginActivity.this, UserActivity.class));
+                    finish();
+                }
+                else{
+                    startActivity(new Intent(LoginActivity.this, UsersActivity.class));
+                    finish();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "onCancelled", databaseError.toException());
+            }
+        });
     }
 
 //    public void onComplete(@NonNull Task<AuthResult> task) {

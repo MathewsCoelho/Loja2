@@ -9,6 +9,8 @@ public class User {
     private String nome;
     private String sobrenome;
     private String funcao;
+    private String key;
+    private Integer index;
     private String email;
     private FirebaseUser firebaseUser;
 
@@ -53,6 +55,24 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getKey(){
+        return key;
+    }
+
+    public void setKey(String key){
+        this.key = key;
+    }
+
+    @Exclude
+    public Integer getIndex(){
+        return index;
+    }
+
+    @Exclude
+    public void setIndex(Integer index){
+        this.index = index;
     }
 
     @Exclude
