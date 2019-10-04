@@ -38,6 +38,20 @@
     <string name="hint_funcao_signup">Função</string>
     <string name="hint_login_signup">E-mail</string>
     <string name="hint_senha_signup">Senha</string>
+    <string name="menu_lercodigodebarras" />
+    <string name="menu_limparform" />
+    <string name="menu_cancelar"> Cancelar </string>
+    <string name="menu_vender"> Vender </string>
+    <string name="menu_nav_carrinho" />
+    <string name="menu_nav_lista_de_clientes" />
+    <string name="menu_nav_produto_admin" />
+    <string name="menu_nav_cliente_admin" />
+    <string name="menu_nav_usuario" />
+    <string name="menu_nav_sobre" />
+    <string name="menu_nav_sair" />
+    <string name="menu_pesquisar" />
+    <string name="hint_total_item" > R$ 0,00 </string>
+    <string name="hint_quantidade"> 100 </string>
     <string-array name="function_arrays">
         <item>Administrador</item>
         <item>Vendedor</item>
