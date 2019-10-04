@@ -15,9 +15,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifsul.loja.R;
-import br.edu.ifsul.loja.adapter.UsersAdapter;
-import br.edu.ifsul.loja.model.User;
+import br.edu.ifsul.loja2.R;
+import br.edu.ifsul.loja2.adapter.UsersAdapter;
+import br.edu.ifsul.loja2.model.User;
 
 public class UsersActivity extends AppCompatActivity {
 

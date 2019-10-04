@@ -18,8 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
-import br.edu.ifsul.loja.R;
-import br.edu.ifsul.loja.model.User;
+import br.edu.ifsul.loja2.R;
+import br.edu.ifsul.loja2.model.User;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -80,7 +80,7 @@ public class UserActivity extends AppCompatActivity {
                             usuario.setEmail(user.getEmail());
 
                             FirebaseDatabase.getInstance().getReference().child("vendas").child("users").child(mAuth.getCurrentUser().getUid()).setValue(usuario);
-                            Toast.makeText(UserActivity.this, "Marcos comeu coco.",
+                            Toast.makeText(UserActivity.this, "Usuário cadastrado com sucesso.",
                                     Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(UserActivity.this, LoginActivity.class));
                         } else {

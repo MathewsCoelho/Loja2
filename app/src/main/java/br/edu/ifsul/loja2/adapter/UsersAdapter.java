@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.edu.ifsul.loja.R;
-import br.edu.ifsul.loja.model.User;
+import br.edu.ifsul.loja2.R;
+import br.edu.ifsul.loja2.model.User;
 
 public class UsersAdapter extends ArrayAdapter<User> {
 
@@ -36,8 +36,7 @@ public class UsersAdapter extends ArrayAdapter<User> {
         }
 
         User user = getItem(position);
-        holder.tvNome.setText(user.getNome());
-        holder.tvSobrenome.setText(user.getSobrenome());
+        holder.tvNome.setText(user.getNome().concat(" " + user.getSobrenome()));
         holder.tvFuncaoUser.setText(user.getFuncao());
         holder.tvProgressBar.setVisibility(View.GONE);
 
@@ -46,13 +45,11 @@ public class UsersAdapter extends ArrayAdapter<User> {
 
     private class ViewHolder{
         final TextView tvNome;
-        final TextView tvSobrenome;
         final TextView tvFuncaoUser;
         final ProgressBar tvProgressBar;
 
         public ViewHolder(View view){
             tvNome = view.findViewById(R.id.tvNomeUser);
-            tvSobrenome = view.findViewById(R.id.tvSobrenomeUser);
             tvFuncaoUser = view.findViewById(R.id.tvFuncaoUser);
             tvProgressBar = view.findViewById(R.id.pb_foto_user);
         }
