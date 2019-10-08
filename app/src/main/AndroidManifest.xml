@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.edu.ifsul.loja2">
-
+    <uses-feature android:name="android.hardware.camera" /> <!-- Para o leitor de código de barras -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- para acesso ao cartão sd -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
