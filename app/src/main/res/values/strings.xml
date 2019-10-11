@@ -38,7 +38,6 @@
     <string name="hint_funcao_signup">Função</string>
     <string name="hint_login_signup">E-mail</string>
     <string name="hint_senha_signup">Senha</string>
-    <string name="menu_lercodigodebarras" />
     <string name="menu_limparform" />
     <string name="menu_cancelar"> Cancelar </string>
     <string name="menu_vender"> Vender </string>
@@ -49,7 +48,6 @@
     <string name="menu_nav_usuario" />
     <string name="menu_nav_sobre" />
     <string name="menu_nav_sair" />
-    <string name="menu_pesquisar" />
     <string name="menu_pesquisar">pesquisar</string>
     <string name="menu_lercodigodebarras">Ler código de barras</string>
     <string name="hint_total_item" > R$ 0,00 </string>
@@ -75,5 +73,6 @@
     <string name="barcode_error">"Error reading barcode: %1$s"</string>
     <string name="label_codigo_de_barras">Código De Barras</string>
     <string name="hint_codigo_de_barras">Utilize o leitor ou digite</string>
+    <string name="snack_codigo_barras_nao_cadastrado">Código de barras não cadastrado.</string>
 
 </resources>

@@ -17,6 +17,7 @@
         <activity android:name=".activity.ProdutoDetalheActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ClientesActivity" />
+        <activity android:name=".barcode.BarcodeCaptureActivity" />
         <activity android:name=".activity.ProdutosActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
