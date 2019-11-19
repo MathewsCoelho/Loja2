@@ -23,6 +23,8 @@ public class CarrinhoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_carrinho);
         Log.d(TAG, "Carrinho=" + AppSetup.carrinho);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         lvCarrinho = findViewById(R.id.lv_carrinho);
 
         lvCarrinho.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,6 +43,13 @@ public class CarrinhoActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     // Inflar o menu
 
     @Override
@@ -54,9 +63,13 @@ public class CarrinhoActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.menuitem_salvar_pedido:
                 Toast.makeText(this, "Salvar", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.menuitem_cancelar_pedido:
                 Toast.makeText(this, "Cancelar", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.home:
+                finish();
                 break;
         };
         return true;

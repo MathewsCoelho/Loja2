@@ -32,6 +32,8 @@
     <string name="hint_vendedor"> vendedor@email.com </string>
     <string name="snack_insira_quantidade">Insira a quantidade</string>
     <string name="snack_qde_insuficiente">Estoque insuficiente</string>
+    <string name="titulo_cliente_selecionado">Confirmar esta seleção?</string>
+    <string name="toast_cliente_selecionado">Cliente selecionado.</string>
     <string name="bt_cadastro">Cadastrar</string>
     <string name="hint_nome_signup">Nome</string>
     <string name="hint_sobrenome_signup">Sobrenome</string>
@@ -74,5 +76,19 @@
     <string name="label_codigo_de_barras">Código De Barras</string>
     <string name="hint_codigo_de_barras">Utilize o leitor ou digite</string>
     <string name="snack_codigo_barras_nao_cadastrado">Código de barras não cadastrado.</string>
+    <string name="title_modal_atencao">Atenção</string>
+    <string name="message_modal_sair">Tem produtos no carrinho. Se você sair do aplicativo irá perder a venda.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 </resources>

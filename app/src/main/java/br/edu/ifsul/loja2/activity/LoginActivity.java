@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.getValue(String.class).equals("Administrador")) {
-                    startActivity(new Intent(LoginActivity.this, UsersActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ClientesActivity.class));
                     finish();
                 }
                 else{

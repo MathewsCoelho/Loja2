@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,6 +39,9 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto_detalhe);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         int position = getIntent().getExtras().getInt("position");
         produto = AppSetup.listProdutos.get(position);
 
@@ -107,8 +111,16 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
 
-
+        return true;
     }
 }
