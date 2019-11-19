@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -63,9 +64,6 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(AppSetup.user.getFuncao().equals("Administrador")){
-            navigationView.getMenu().findItem(R.id.nav_group_admin).setVisible(true);
-        }
 
         //mapeia o componente da view
         lvProdutos = findViewById(R.id.lv_produtos);
@@ -172,10 +170,23 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()){
-            case R.id.nav_home:
-                Toast.makeText(this, "Clicou no navhome", Toast.LENGTH_SHORT).show();
+            case R.id.nav_carrinho:
+                if(AppSetup.carrinho.isEmpty()){
+                    Toast.makeText(this, "O Carrinho está vazio", Toast.LENGTH_SHORT).show();
+                } else {
+                    startActivity(new Intent(ProdutosActivity.this, CarrinhoActivity.class));
+                }
                 break;
+            case R.id.nav_clientes:
+                startActivity(new Intent(ProdutosActivity.this, ClientesActivity.class));
+                break;
+
+            case R.id.nav_sobre:
+                startActivity(new Intent(ProdutosActivity.this, ProdutosActivity.class));
         }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }

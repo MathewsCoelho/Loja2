@@ -34,6 +34,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
     private ProgressBar pbFoto;
     private EditText etQuantidade;
     private Produto produto;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AppSetup.cliente = new Cliente();
                 if(AppSetup.cliente == null){
-                    //busca aqui o cliente na lista de clientes
+                    startActivity(new Intent(ProdutoDetalheActivity.this, ClientesActivity.class));
                 } else{
                     if(!etQuantidade.getText().toString().isEmpty()){
                         if(Integer.parseInt(etQuantidade.getText().toString()) > produto.getQuantidade() || Integer.parseInt(etQuantidade.getText().toString()) <= 0){
@@ -68,13 +69,14 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
                                     R.string.snack_qde_insuficiente,
                                     Snackbar.LENGTH_LONG).show();
                         }else{
-                            ItemPedido item = new ItemPedido(produto);
+                            ItemPedido item = new ItemPedido();
+                            item.setProduto(produto);
                             item.setQuantidade(Integer.parseInt(etQuantidade.getText().toString()));
                             item.setTotalItem(Integer.parseInt(etQuantidade.getText().toString()) * produto.getValor());
                             item.setSituacao(true);
                             AppSetup.carrinho.add(item);
-                            myRef.setValue(produto.getQuantidade() - Integer.parseInt(etQuantidade.getText().toString()));
                             startActivity(new Intent(ProdutoDetalheActivity.this, CarrinhoActivity.class));
+                            atualizarEstoque(Integer.parseInt(etQuantidade.getText().toString()));
                             finish();
                         }
                     } else{
@@ -111,6 +113,11 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void atualizarEstoque(Integer qtd){
+        database.getInstance().getReference("vendas/produtos").child(produto.getKey())
+                .child("quantidade").setValue(produto.getQuantidade() - qtd);
     }
 
     @Override

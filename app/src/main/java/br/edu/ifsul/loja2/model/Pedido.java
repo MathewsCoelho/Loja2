@@ -1,20 +1,19 @@
 package br.edu.ifsul.loja2.model;
+import java.util.Date;
 import java.util.List;
 
 public class Pedido {
     private String key;
     private String formaDePagamento;
     private String estado;
-    private Long dataCriacao;
-    private Long dataModificacao;
+    private Date dataCriacao;
+    private Date dataModificacao;
     private Double totalPedido;
     private Boolean situacao;
     private List<ItemPedido> itens; //associação entre as classes Pedido-ItemPedido
     private Cliente cliente; //associação entre as classes Pedido-Cliente
 
-    public Pedido(List<ItemPedido> itens){
-        this.itens = itens;
-    }
+    public Pedido(){ }
 
     public String getKey() {
         return key;
@@ -40,19 +39,19 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Long getDataCriacao() {
+    public Date getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(Long dataCriacao) {
+    public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public Long getDataModificacao() {
+    public Date getDataModificacao() {
         return dataModificacao;
     }
 
-    public void setDataModificacao(Long dataModificacao) {
+    public void setDataModificacao(Date dataModificacao) {
         this.dataModificacao = dataModificacao;
     }
 
@@ -75,6 +74,8 @@ public class Pedido {
     public List<ItemPedido> getItens() {
         return itens;
     }
+
+    public void setItens(List<ItemPedido> itens) { this.itens = itens; }
 
     public Cliente getCliente() {
         return cliente;
