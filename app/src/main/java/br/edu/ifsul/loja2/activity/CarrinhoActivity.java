@@ -35,7 +35,7 @@ public class CarrinhoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho);
-        Log.d(TAG, "Carrinho=" + AppSetup.carrinho);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -86,7 +86,7 @@ public class CarrinhoActivity extends AppCompatActivity {
             case R.id.menuitem_cancelar_pedido:
                 Cancelar();
                 break;
-            case R.id.home:
+            case android.R.id.home:
                 finish();
                 break;
         };
@@ -103,11 +103,9 @@ public class CarrinhoActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                for(ItemPedido item : AppSetup.carrinho){
-                    DatabaseReference dbRef = database.getReference("vendas/produtos")
-                            .child(item.getProduto().getKey()).child("quantidade");
-                    dbRef.setValue(item.getQuantidade() + item.getProduto().getQuantidade());
-                    Log.d("Removido com sucesso!" , item.toString());
+                int size = AppSetup.carrinho.size();
+                for (int i = 0; i < size; i++) {
+                    atualizarEstoque(i);
                 }
 
                 AppSetup.carrinho.clear();
@@ -187,6 +185,8 @@ public class CarrinhoActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 atualizarEstoque(position);
+                AppSetup.carrinho.remove(position);
+                Log.d("item", "Item removido");
                 atualizarView();
                 Toast.makeText(CarrinhoActivity.this, "Produto removido com sucesso", Toast.LENGTH_SHORT).show();
             }
@@ -212,9 +212,12 @@ public class CarrinhoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 atualizarEstoque(position);
+                AppSetup.carrinho.remove(position);
+                Log.d("item", "Item removido");
                 Intent intent = new Intent(CarrinhoActivity.this, ProdutoDetalheActivity.class);
                 intent.putExtra("position", AppSetup.listProdutos.get(position).getIndex());
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -228,17 +231,19 @@ public class CarrinhoActivity extends AppCompatActivity {
     }
 
     public void atualizarEstoque(int position) {
+        Log.d(TAG, "Carrinho=" + AppSetup.carrinho);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("vendas/produtos")
                 .child(AppSetup.carrinho.get(position).getProduto().getKey()).child("quantidade");
 
-        myRef.setValue(AppSetup.carrinho.get(position).getQuantidade() +
-                AppSetup.carrinho.get(position).getProduto().getQuantidade());
+        int quantidade = AppSetup.carrinho.get(position).getQuantidade() +
+                AppSetup.carrinho.get(position).getProduto().getQuantidade();
+        Log.d(TAG, "quantidade=" + quantidade);
+        myRef.setValue(quantidade);
 
         Log.d("Removido", AppSetup.carrinho.get(position).toString());
-        AppSetup.carrinho.remove(position);
-        Log.d("item", "Item removido");
 
+        Log.d(TAG, "Carrinho=" + AppSetup.carrinho);
         atualizarView();
 
         if(AppSetup.carrinho.isEmpty()){

@@ -35,6 +35,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
     private EditText etQuantidade;
     private Produto produto;
     private FirebaseDatabase database;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int position = getIntent().getExtras().getInt("position");
-        produto = AppSetup.listProdutos.get(position);
+        position= getIntent().getExtras().getInt("position");
 
         tvNome = findViewById(R.id.tvNomeProduto);
         imvFoto = findViewById(R.id.imvFoto);
@@ -54,7 +54,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         tvDescricao = findViewById(R.id.tvDerscricaoProduto);
         etQuantidade = findViewById(R.id.etQuantidade);
 
-        final DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("vendas/produtos/" + produto.getKey() + "/quantidade");
+        final DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("vendas/produtos/" + AppSetup.listProdutos.get(position).getKey() + "/quantidade");
 
         findViewById(R.id.btComprarProduto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,19 +64,20 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
                     startActivity(new Intent(ProdutoDetalheActivity.this, ClientesActivity.class));
                 } else{
                     if(!etQuantidade.getText().toString().isEmpty()){
-                        if(Integer.parseInt(etQuantidade.getText().toString()) > produto.getQuantidade() || Integer.parseInt(etQuantidade.getText().toString()) <= 0){
+                        if(Integer.parseInt(etQuantidade.getText().toString()) > AppSetup.listProdutos.get(position).getQuantidade() || Integer.parseInt(etQuantidade.getText().toString()) <= 0){
                             Snackbar.make(findViewById(R.id.container_activity_detalhe_produto),
                                     R.string.snack_qde_insuficiente,
                                     Snackbar.LENGTH_LONG).show();
                         }else{
                             ItemPedido item = new ItemPedido();
-                            item.setProduto(produto);
+                            item.setProduto(AppSetup.listProdutos.get(position));
                             item.setQuantidade(Integer.parseInt(etQuantidade.getText().toString()));
-                            item.setTotalItem(Integer.parseInt(etQuantidade.getText().toString()) * produto.getValor());
+                            item.setTotalItem(Integer.parseInt(etQuantidade.getText().toString()) * AppSetup.listProdutos.get(position).getValor());
                             item.setSituacao(true);
                             AppSetup.carrinho.add(item);
                             startActivity(new Intent(ProdutoDetalheActivity.this, CarrinhoActivity.class));
-                            atualizarEstoque(Integer.parseInt(etQuantidade.getText().toString()));
+                            int qtd = Integer.parseInt(etQuantidade.getText().toString());
+                            atualizarEstoque(qtd);
                             finish();
                         }
                     } else{
@@ -89,13 +90,13 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         });
 
         //bind nos componentes da view
-        tvNome.setText(produto.getNome());
-        tvValor.setText(NumberFormat.getCurrencyInstance().format(produto.getValor()));
-        tvEstoque.setText(produto.getQuantidade().toString());
-        tvDescricao.setText(produto.getDescricao());
+        tvNome.setText(AppSetup.listProdutos.get(position).getNome());
+        tvValor.setText(NumberFormat.getCurrencyInstance().format(AppSetup.listProdutos.get(position).getValor()));
+        tvEstoque.setText(AppSetup.listProdutos.get(position).getQuantidade().toString());
+        tvDescricao.setText(AppSetup.listProdutos.get(position).getDescricao());
         //ativar quando tiver a navegabilidade definida
         //tvVendedor.setText(AppSetup.user.getEmail());
-        if(produto.getUrl_foto().equals("")){
+        if(AppSetup.listProdutos.get(position).getUrl_foto().equals("")){
             pbFoto.setVisibility(View.INVISIBLE);
         }else{
             //carrega a foto aqui
@@ -116,8 +117,8 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
     }
 
     public void atualizarEstoque(Integer qtd){
-        database.getInstance().getReference("vendas/produtos").child(produto.getKey())
-                .child("quantidade").setValue(produto.getQuantidade() - qtd);
+        database.getInstance().getReference("vendas/produtos").child(AppSetup.listProdutos.get(position).getKey())
+                .child("quantidade").setValue(AppSetup.listProdutos.get(position).getQuantidade() - qtd);
     }
 
     @Override
