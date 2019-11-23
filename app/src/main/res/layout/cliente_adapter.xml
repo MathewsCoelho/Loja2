@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.v7.widget.CardView
@@ -30,16 +31,13 @@
                 android:id="@+id/imvFotoClienteAdapter"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="296dp"
-                android:layout_marginLeft="296dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:contentDescription="@string/foto_do_cliente"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/img_cliente" />
@@ -52,6 +50,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
                 android:hint="@string/hint_nome_cliente"
                 android:textColor="#fff"
@@ -69,6 +68,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/roboto"
                 android:hint="@string/hint_cpf_cliente"
                 android:textColor="#fff"
                 android:textColorHighlight="#00441919"

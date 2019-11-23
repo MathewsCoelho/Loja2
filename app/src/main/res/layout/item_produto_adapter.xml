@@ -15,8 +15,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@color/font_white"
         app:cardCornerRadius="4dp"
-        android:background="@android:color/transparent"
         app:cardElevation="4dp"
         app:cardMaxElevation="2dp"
         app:cardUseCompatPadding="true"
@@ -33,57 +33,67 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto"
                 android:gravity="end"
                 android:hint="@string/hint_estoque"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNomeProdutoAdapter" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tvNomeProdutoAdapter"
                 android:layout_width="258dp"
                 android:layout_height="25dp"
                 android:layout_gravity="start"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+                android:fontFamily="@font/roboto_bold"
                 android:hint="@string/hint_nome_produto"
                 android:textColorHint="#000000"
                 android:textFontWeight="700"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imvFotoProdutoAdapter" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imvFotoProdutoAdapter"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imvFotoProdutoAdapter"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:contentDescription="@string/contentDescription_nome_produto"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/img_carrinho_de_compras" />
 
             <TextView
                 android:id="@+id/tvValorProdutoItemAdapter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto"
                 android:hint="@string/hint_valor_produto"
                 android:textColor="#00B31414"
                 android:textColorHighlight="#00441919"
                 android:textColorHint="#016F2C"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tvNomeProdutoAdapter"
-                app:layout_constraintTop_toBottomOf="@+id/tvNomeProdutoAdapter" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imvFotoProdutoAdapter" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.LinearLayoutCompat>
