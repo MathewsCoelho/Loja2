@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.util.Date;
 
 import br.edu.ifsul.loja2.R;
@@ -29,7 +30,8 @@ public class CarrinhoActivity extends AppCompatActivity {
 
     private static final String TAG = "carrinhoActivity";
     private ListView lvCarrinho;
-    private double totalPedido;
+    private Double totalPedido = new Double(0.0);
+    private TextView tvTotalPedidoCarrinho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class CarrinhoActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView tvTotalPedidoCarrinho = findViewById(R.id.tvTotalPedidoCarrinho);
+        tvTotalPedidoCarrinho = findViewById(R.id.tvTotalPedidoCarrinho);
 
         lvCarrinho = findViewById(R.id.lv_carrinho);
 
@@ -58,15 +60,18 @@ public class CarrinhoActivity extends AppCompatActivity {
             }
         });
 
-        atualizarView();
-
-        tvTotalPedidoCarrinho.setText(String.valueOf(totalPedido));
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        atualizarView();
     }
 
     // Inflar o menu
@@ -255,8 +260,12 @@ public class CarrinhoActivity extends AppCompatActivity {
 
     public void atualizarView(){
         lvCarrinho.setAdapter(new CarrinhoAdapter(CarrinhoActivity.this, AppSetup.carrinho));
-        for(ItemPedido itemPedido: AppSetup.carrinho){
-            totalPedido = totalPedido + itemPedido.getTotalItem();
+        totalPedido = 0d;
+        for(ItemPedido i : AppSetup.carrinho){
+
+            totalPedido += i.getTotalItem();
+
         }
+        tvTotalPedidoCarrinho.setText(NumberFormat.getCurrencyInstance().format(totalPedido));
     }
 }

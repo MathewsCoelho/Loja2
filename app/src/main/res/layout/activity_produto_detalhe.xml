@@ -65,7 +65,7 @@
         android:id="@+id/btComprarProduto"
         android:layout_width="142dp"
         android:layout_height="57dp"
-        android:background="@color/colorAccent"
+        android:background="#34495e"
         android:text="@string/bt_vender"
         android:textColor="@color/font_white"
         android:textSize="22sp"

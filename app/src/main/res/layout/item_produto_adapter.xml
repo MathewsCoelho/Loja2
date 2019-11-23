@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
-    <android.support.v7.widget.CardView
+    <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -15,8 +15,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="6dp"
+        app:cardCornerRadius="4dp"
+        android:background="@android:color/transparent"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="2dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,31 +33,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="8dp"
                 android:gravity="end"
                 android:hint="@string/hint_estoque"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvValorProdutoItemAdapter" />
+                app:layout_constraintTop_toBottomOf="@+id/tvNomeProdutoAdapter" />
 
             <TextView
                 android:id="@+id/tvNomeProdutoAdapter"
                 android:layout_width="258dp"
                 android:layout_height="25dp"
                 android:layout_gravity="start"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="@string/hint_nome_produto"
                 android:textColorHint="#000000"
                 android:textFontWeight="700"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.034"
                 app:layout_constraintTop_toTopOf="@+id/imvFotoProdutoAdapter" />
 
             <ImageView
@@ -76,17 +76,15 @@
                 android:id="@+id/tvValorProdutoItemAdapter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="32dp"
                 android:hint="@string/hint_valor_produto"
                 android:textColor="#00B31414"
                 android:textColorHighlight="#00441919"
                 android:textColorHint="#016F2C"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvEstoqueProdutoAdapater"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvNomeProdutoAdapter" />
+                app:layout_constraintStart_toStartOf="@+id/tvNomeProdutoAdapter"
+                app:layout_constraintTop_toBottomOf="@+id/tvNomeProdutoAdapter" />
         </android.support.constraint.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.LinearLayoutCompat>
 </android.support.constraint.ConstraintLayout>

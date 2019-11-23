@@ -46,6 +46,8 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
 
         position= getIntent().getExtras().getInt("position");
 
+        produto = AppSetup.listProdutos.get(position);
+
         tvNome = findViewById(R.id.tvNomeProduto);
         imvFoto = findViewById(R.id.imvFoto);
         pbFoto = findViewById(R.id.pb_foto_produto_detalhe);
@@ -54,7 +56,7 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         tvDescricao = findViewById(R.id.tvDerscricaoProduto);
         etQuantidade = findViewById(R.id.etQuantidade);
 
-        final DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("vendas/produtos/" + AppSetup.listProdutos.get(position).getKey() + "/quantidade");
+        final DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("vendas/produtos/" + produto.getKey() + "/quantidade");
 
         findViewById(R.id.btComprarProduto).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,15 +66,15 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
                     startActivity(new Intent(ProdutoDetalheActivity.this, ClientesActivity.class));
                 } else{
                     if(!etQuantidade.getText().toString().isEmpty()){
-                        if(Integer.parseInt(etQuantidade.getText().toString()) > AppSetup.listProdutos.get(position).getQuantidade() || Integer.parseInt(etQuantidade.getText().toString()) <= 0){
+                        if(Integer.parseInt(etQuantidade.getText().toString()) > produto.getQuantidade() || Integer.parseInt(etQuantidade.getText().toString()) <= 0){
                             Snackbar.make(findViewById(R.id.container_activity_detalhe_produto),
                                     R.string.snack_qde_insuficiente,
                                     Snackbar.LENGTH_LONG).show();
                         }else{
                             ItemPedido item = new ItemPedido();
-                            item.setProduto(AppSetup.listProdutos.get(position));
+                            item.setProduto(produto);
                             item.setQuantidade(Integer.parseInt(etQuantidade.getText().toString()));
-                            item.setTotalItem(Integer.parseInt(etQuantidade.getText().toString()) * AppSetup.listProdutos.get(position).getValor());
+                            item.setTotalItem(Integer.parseInt(etQuantidade.getText().toString()) * produto.getValor());
                             item.setSituacao(true);
                             AppSetup.carrinho.add(item);
                             startActivity(new Intent(ProdutoDetalheActivity.this, CarrinhoActivity.class));
@@ -90,13 +92,13 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         });
 
         //bind nos componentes da view
-        tvNome.setText(AppSetup.listProdutos.get(position).getNome());
-        tvValor.setText(NumberFormat.getCurrencyInstance().format(AppSetup.listProdutos.get(position).getValor()));
-        tvEstoque.setText(AppSetup.listProdutos.get(position).getQuantidade().toString());
-        tvDescricao.setText(AppSetup.listProdutos.get(position).getDescricao());
+        tvNome.setText(produto.getNome());
+        tvValor.setText(NumberFormat.getCurrencyInstance().format(produto.getValor()));
+        tvEstoque.setText(produto.getQuantidade().toString());
+        tvDescricao.setText(produto.getDescricao());
         //ativar quando tiver a navegabilidade definida
         //tvVendedor.setText(AppSetup.user.getEmail());
-        if(AppSetup.listProdutos.get(position).getUrl_foto().equals("")){
+        if(produto.getUrl_foto().equals("")){
             pbFoto.setVisibility(View.INVISIBLE);
         }else{
             //carrega a foto aqui
@@ -106,7 +108,9 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tvEstoque.setText(dataSnapshot.getValue(Integer.class).toString());
+                Integer estoque = dataSnapshot.getValue(Integer.class);
+                tvEstoque.setText(estoque.toString());
+                produto.setQuantidade(estoque);
             }
 
             @Override
@@ -117,8 +121,8 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
     }
 
     public void atualizarEstoque(Integer qtd){
-        database.getInstance().getReference("vendas/produtos").child(AppSetup.listProdutos.get(position).getKey())
-                .child("quantidade").setValue(AppSetup.listProdutos.get(position).getQuantidade() - qtd);
+        database.getInstance().getReference("vendas/produtos").child(produto.getKey())
+                .child("quantidade").setValue(produto.getQuantidade() - qtd);
     }
 
     @Override
