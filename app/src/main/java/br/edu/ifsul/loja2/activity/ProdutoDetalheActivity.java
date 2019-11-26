@@ -61,7 +61,6 @@ public class ProdutoDetalheActivity extends AppCompatActivity {
         findViewById(R.id.btComprarProduto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppSetup.cliente = new Cliente();
                 if(AppSetup.cliente == null){
                     startActivity(new Intent(ProdutoDetalheActivity.this, ClientesActivity.class));
                 } else{

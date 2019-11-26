@@ -64,16 +64,16 @@ public class ClientesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d(TAG, "dataSnapshot=" + dataSnapshot);
-                List<Cliente> listClientes = new ArrayList<>();
+                clientes = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Log.d(TAG, "dataSnapshot=" + ds);
                     Cliente cliente = ds.getValue(Cliente.class);
                     cliente.setKey(ds.getKey());
-                    cliente.setIndex(listClientes.size());
-                    AppSetup.listClientes.add(cliente);
+                    cliente.setIndex(clientes.size());
+                    clientes.add(cliente);
                 }
 
-                lvClientes.setAdapter(new ClientesAdapter(ClientesActivity.this, AppSetup.listClientes));
+                lvClientes.setAdapter(new ClientesAdapter(ClientesActivity.this, clientes));
             }
 
             @Override

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class CarrinhoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho);
 
+        ((TextView) findViewById(R.id.tvClienteCarrinho)).setText(AppSetup.cliente.getNome() + " " + AppSetup.cliente.getSobrenome());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
