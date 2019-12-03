@@ -162,14 +162,14 @@ public class ClientesActivity extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Log.d(TAG, "Barcode read: " + barcode.displayValue);
                     boolean flag = true;
+                    int count = 0;
                     for (Cliente cliente : AppSetup.listClientes) {
                         if (String.valueOf(cliente.getCodigoDeBarras()).equals(barcode.displayValue)) {
                             flag = false;
-                            Intent intent = new Intent(ClientesActivity.this, ClientesActivity.class);
-                            intent.putExtra("position", cliente.getIndex());
-                            startActivity(intent);
+                            confirmaSelecaoCliente(count);
                             break;
                         }
+                        count++;
                     }
                     if (flag) {
                         Snackbar.make(findViewById(R.id.container_activity_clientes_), getString(R.string.snack_codigo_barras_nao_cadastrado), Snackbar.LENGTH_LONG).show();

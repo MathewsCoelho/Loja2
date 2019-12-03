@@ -64,6 +64,9 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        if(AppSetup.user.getFuncao().equals("Administrador")){
+            navigationView.getMenu().findItem(R.id.nav_group_admin).setVisible(true);
+        }
 
         //mapeia o componente da view
         lvProdutos = findViewById(R.id.lv_produtos);
@@ -183,6 +186,10 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
 
             case R.id.nav_sobre:
                 startActivity(new Intent(ProdutosActivity.this, ProdutosActivity.class));
+
+            case R.id.nav_add_user:
+                startActivity(new Intent(ProdutosActivity.this, UserActivity.class));
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.edu.ifsul.loja2.R;
+import br.edu.ifsul.loja2.barcode.BarcodeCaptureActivity;
 import br.edu.ifsul.loja2.model.User;
 
 public class UserActivity extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -60,6 +64,16 @@ public class UserActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 
     private void signUp(final String nome, final String sobrenome, final String funcao, String email, String senha) {

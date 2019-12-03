@@ -58,7 +58,7 @@ public class CarrinhoActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int i, long id) {
                 removerItem(i);
-                return false;
+                return true;
             }
         });
 
