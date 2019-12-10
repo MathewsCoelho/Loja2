@@ -17,8 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -67,6 +69,15 @@ public class ProdutosActivity extends AppCompatActivity implements NavigationVie
         if(AppSetup.user.getFuncao().equals("Administrador")){
             navigationView.getMenu().findItem(R.id.nav_group_admin).setVisible(true);
         }
+
+        View header = navigationView.getHeaderView(0);
+        TextView emailUser = header.findViewById(R.id.tv_email_nav_header);
+        TextView nomeUser = header.findViewById(R.id.tv_nome_nav_header);
+        ImageView imageUser = header.findViewById(R.id.tv_image_nav_header);
+        nomeUser.setText(AppSetup.user.getFuncao());
+        emailUser.setText(AppSetup.user.getFirebaseUser().getEmail());
+        imageUser.setImageResource(R.drawable.user_2_48);
+
 
         //mapeia o componente da view
         lvProdutos = findViewById(R.id.lv_produtos);

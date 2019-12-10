@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.edu.ifsul.loja2.R;
-import br.edu.ifsul.loja2.barcode.BarcodeCaptureActivity;
 import br.edu.ifsul.loja2.model.User;
 
 public class UserActivity extends AppCompatActivity {
